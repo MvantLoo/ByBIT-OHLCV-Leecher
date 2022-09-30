@@ -3,9 +3,11 @@
 CorpusCrypto Leecher - Settings
 Settings used in all scripts
 
+Overzicht van pairs: https://public.bybit.com/spot_index/
+
 """
 
-pair = 'BTCUSD'
+pair = 'ETHUSD'
 url = f'https://public.bybit.com/spot_index/{pair}/'
 
 folder_download = '1_download'
