@@ -25,8 +25,16 @@ pack_folder = settings.pair + "/" + settings.folder_pack + "/"
 for file in sorted(os.listdir(unpack_folder)): # IMPORTANT read the file list SORTED
   print(file, end="")
   file_split = file.split("-")
+  file_all = pack_folder + settings.pair + ".csv"
   file_year = pack_folder + file_split[0] + ".csv"
   file_month = pack_folder + file_split[0] + "-" + file_split[1] + ".csv"
+
+  # If the all file doesn't exist, write the header, else append
+  if not os.path.exists(file_all):
+    fa = open(file_all, "w")
+    fa.write("start_at,symbol,period,open,high,low,close\n")
+  else:
+    fa = open(file_all, "a")
 
   # If the year file doesn't exist, write the header, else append
   if not os.path.exists(file_year):
@@ -47,11 +55,13 @@ for file in sorted(os.listdir(unpack_folder)): # IMPORTANT read the file list SO
   with open(unpack_folder + file) as fp:
     for line in fp:
         if line_nr: # To skip the first line, first time this is 0, next time this is 1
+          fa.write(line)
           fy.write(line)
           fm.write(line)
         line_nr = 1
 
   fp.close()
+  fa.close()
   fy.close()
   fm.close()
 
