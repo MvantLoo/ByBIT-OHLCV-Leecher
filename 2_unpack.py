@@ -14,23 +14,16 @@ import os,gzip,shutil
 #from bs4 import BeautifulSoup
 
 # Create folders if not exist
-try: # folder of Pair
-  os.mkdir(settings.pair)
-except:
-  pass
-try: # folder of script-name
-  os.mkdir(settings.pair + "/" + os.path.basename(__file__))
-except:
-  pass
+os.mkdir(settings.pair + "/" + settings.folder_unpack, exist_ok=True)
 
 # Find the files in the download folder, unpack and save in the unpack folder
-download_folder = settings.pair + "/1_download.py/"
-unpack_folder = settings.pair + "/" + os.path.basename(__file__) + "/"
+download_folder = settings.pair + "/" + settings.folder_download + "/"
+unpack_folder = settings.pair + "/" + settings.folder_unpack + "/"
 
 for file in os.listdir(download_folder):
   print(file, end="")
   file_in = download_folder + file
-  file_out = unpack_folder + file.replace(".gz","")
+  file_out = unpack_folder + file.replace(".gz","") # Remove .gz to keep .csv
 
   # If unzipped file does not exist, unzip and save
   if not os.path.exists(file_out):
