@@ -5,7 +5,6 @@ CorpusCrypto Leecher - Unpacker
 Look in Download folder and unpack the files.
 
 Requirements:
-#pip install beautifulsoup4
 
 """
 import settings
