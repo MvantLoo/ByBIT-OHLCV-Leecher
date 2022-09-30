@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 
 CorpusCrypto Leecher - Unpacker
@@ -8,13 +9,13 @@ Requirements:
 
 """
 import settings
-import os,gzip,shutil
+import os,gzip,shutil,pathlib
 #import requests
 #import urllib.request
 #from bs4 import BeautifulSoup
 
 # Create folders if not exist
-os.mkdir(settings.pair + "/" + settings.folder_unpack, exist_ok=True)
+pathlib.Path(settings.pair + "/" + settings.folder_unpack).mkdir(parents=True, exist_ok=True)
 
 # Find the files in the download folder, unpack and save in the unpack folder
 download_folder = settings.pair + "/" + settings.folder_download + "/"

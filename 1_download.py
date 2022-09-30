@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 
 CorpusCrypto Leecher - Downloader
@@ -8,12 +9,12 @@ pip install beautifulsoup4
 
 """
 import settings
-import requests,os
+import requests,os,pathlib
 import urllib.request
 from bs4 import BeautifulSoup
 
 # Create folders if not exist
-os.mkdir(settings.pair + "/" + settings.folder_download, exist_ok=True)
+pathlib.Path(settings.pair + "/" + settings.folder_download).mkdir(parents=True, exist_ok=True)
 
 # Read the HTML file and parse by BS
 print(settings.url)

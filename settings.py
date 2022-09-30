@@ -5,7 +5,7 @@ Settings used in all scripts
 
 """
 
-pair = 'ETHUSD'
+pair = 'BTCUSD'
 url = f'https://public.bybit.com/spot_index/{pair}/'
 
 folder_download = '1_download'
