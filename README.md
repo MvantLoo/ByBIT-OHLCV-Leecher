@@ -1,0 +1,3 @@
+- `./1_download.py` to download the data from ByBIT
+- `./2_unpack.py` to unpack csv files
+- `./3_pack.py` to repack the csv into monthly/yearly/total csv files

@@ -8,22 +8,25 @@ Requirements:
 
 """
 import settings
-import os,gzip,shutil,pathlib
-#import requests
-#import urllib.request
-#from bs4 import BeautifulSoup
+import os,gzip,shutil,pathlib,sys
 
-# Create folders if not exist
-pathlib.Path(settings.pair + "/" + settings.folder_unpack).mkdir(parents=True, exist_ok=True)
+# Use the pair in the argument, or else the pair in the settings
+try:
+  pair = sys.argv[1]
+except:
+  pair = settings.pair
 
 # Find the files in the download folder, unpack and save in the unpack folder
-download_folder = settings.pair + "/" + settings.folder_download + "/"
-unpack_folder = settings.pair + "/" + settings.folder_unpack + "/"
+folder_download = settings.folder_download + "/" + pair + "/"
+folder_unpack = settings.folder_unpack + "/" + pair + "/"
 
-for file in os.listdir(download_folder):
+# Create folders if not exist
+pathlib.Path(folder_unpack).mkdir(parents=True, exist_ok=True)
+
+for file in os.listdir(folder_download):
   print(file, end="")
-  file_in = download_folder + file
-  file_out = unpack_folder + file.replace(".gz","") # Remove .gz to keep .csv
+  file_in = folder_download + file
+  file_out = folder_unpack + file.replace(".gz","") # Remove .gz to keep .csv
 
   # If unzipped file does not exist, unzip and save
   if not os.path.exists(file_out):

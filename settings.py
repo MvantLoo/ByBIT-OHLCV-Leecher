@@ -7,9 +7,11 @@ Overzicht van pairs: https://public.bybit.com/spot_index/
 
 """
 
-pair = 'ETHUSD'
-url = f'https://public.bybit.com/spot_index/{pair}/'
+pairs = ['ADAUSD','BITUSD','BTCUSD','DOTUSD','EOSUSD','ETHUSD','LTCUSD','LUNAUSD','MANAUSD','SOLUSD','XRPUSD']
 
-folder_download = '1_download'
-folder_unpack = '2_unpack'
-folder_pack = '3_pack'
+pair = 'ETHUSD'
+url = f'https://public.bybit.com/spot_index/'
+
+folder_download = 'DATA/1_download'
+folder_unpack = 'DATA/2_unpack'
+folder_pack = 'DATA/3_pack'
